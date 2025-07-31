@@ -1,0 +1,73 @@
+name: release-please.yml
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          config-file: 'release-please-config.json'
+          manifest-file: '.release-please-manifest.json'
+
+      - name: Check if release was created
+        id: check-release
+        run: |
+          if [[ "${{ steps.release.outputs.release_created }}" == "true" ]]; then
+            echo "Release created successfully."
+          else
+            echo "No release created."
+          fi
+          
+          if [[ -n "${{ steps.release.outputs.tag_name }}" ]]; then
+            echo "Tag name: ${{ steps.release.outputs.tag_name }}"
+          else
+            echo "No tag name found."
+          fi
+          
+          if [[ -n "${{ steps.release.outputs.version }}" ]]; then
+              echo "Version: ${{ steps.release.outputs.version }}"
+          else
+              echo "No version found."
+          fi
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-${{ runner.os }}-
+
+      - name: Set up Java
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Build with Maven
+        if: ${{ steps.release.outputs.release_created }}
+        run: mvn -B clean package
+
+      - name: Upload release artifact
+        uses: softprops/action-gh-release@v1
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          files: ./json-schema-packager/target/dist/*.jar
+          tag_name: ${{ steps.release.outputs.tag_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
