@@ -14,6 +14,9 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: actions/checkout@v4
       - uses: googleapis/release-please-action@v4
@@ -23,7 +26,7 @@ jobs:
           config-file: 'release-please-config.json'
           manifest-file: '.release-please-manifest.json'
 
-      - name: Check if release was created
+      - name: Release Please Status Check
         id: check-release
         run: |
           if [[ "${{ steps.release.outputs.release_created }}" == "true" ]]; then
@@ -43,6 +46,13 @@ jobs:
           else
               echo "No version found."
           fi
+  build-and-upload:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Cache Maven packages
         uses: actions/cache@v4
@@ -53,21 +63,18 @@ jobs:
             maven-${{ runner.os }}-
 
       - name: Set up Java
-        if: ${{ steps.release.outputs.release_created }}
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '21'
 
       - name: Build with Maven
-        if: ${{ steps.release.outputs.release_created }}
         run: mvn -B clean package
 
       - name: Upload release artifact
         uses: softprops/action-gh-release@v1
-        if: ${{ steps.release.outputs.release_created }}
         with:
           files: ./json-schema-packager/target/dist/*.jar
-          tag_name: ${{ steps.release.outputs.tag_name }}
+          tag_name: ${{ needs.release-please.outputs.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
