@@ -11,6 +11,9 @@
     <modules>
         <module>json-schema-api</module>
         <module>json-schema-core</module>
+        <module>json-schema-cli</module>
+
+        <module>json-schema-packager</module>
     </modules>
 
     <properties>
@@ -18,5 +21,25 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+                <dependency>
+                    <groupId>kr.nerdlab.json.schema</groupId>
+                    <artifactId>json-schema-api</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>kr.nerdlab.json.schema</groupId>
+                    <artifactId>json-schema-cli</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>kr.nerdlab.json.schema</groupId>
+                    <artifactId>json-schema-core</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
