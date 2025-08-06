@@ -1,4 +1,4 @@
-name: pr-template.yml
+name: pull-request-policies.yml
 
 on:
   pull_request:
