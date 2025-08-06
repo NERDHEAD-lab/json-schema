@@ -103,6 +103,20 @@
                         </execution>
                     </executions>
                 </plugin>
+
+                <!-- https://mvnrepository.com/artifact/org.panteleyev/jpackage-maven-plugin -->
+                <plugin>
+                    <groupId>org.panteleyev</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>1.6.6</version>
+                </plugin>
+
+                <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/build-helper-maven-plugin -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>3.6.1</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
