@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>kr.nerdlab.json.schema</groupId>
-            <artifactId>json-schema-api</artifactId>
+            <artifactId>json-schema-annotations</artifactId>
         </dependency>
 
         <dependency>

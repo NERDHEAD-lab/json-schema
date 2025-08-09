@@ -14,7 +14,7 @@
     <url>https://github.com/NERDHEAD-lab/json-shema</url>
 
     <modules>
-        <module>json-schema-api</module>
+        <module>json-schema-annotations</module>
         <module>json-schema-core</module>
         <module>json-schema-cli</module>
 
@@ -31,7 +31,7 @@
         <dependencies>
             <dependency>
                 <groupId>kr.nerdlab.json.schema</groupId>
-                <artifactId>json-schema-api</artifactId>
+                <artifactId>json-schema-annotations</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
