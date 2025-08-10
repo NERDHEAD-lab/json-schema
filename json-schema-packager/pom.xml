@@ -45,39 +45,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.panteleyev</groupId>
-                <artifactId>jpackage-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>jpackage</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jpackage</goal>
-                        </goals>
-                        <configuration>
-                            <appVersion>${project.version}</appVersion>
-                            <removeDestination>true</removeDestination>
-                            <normalizeAppVersion>true</normalizeAppVersion>
-
-                            <name>json-schema-cli</name>
-                            <type>APP_IMAGE</type>
-                            <input>${project.build.directory}/dist</input>
-                            <mainJar>json-schema-cli.jar</mainJar>
-                            <destination>${project.build.directory}/dist-native</destination>
-
-                            <modulePaths>
-                                <path>${java.home}/jmods</path>
-                            </modulePaths>
-                            <addModules>
-                                <module>java.base</module>
-                                <module>java.management</module>
-                            </addModules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
