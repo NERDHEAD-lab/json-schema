@@ -7,7 +7,7 @@ public class ServletMappingImpl implements ServletMapping {
 
     @SchemaProperty(
             description = "The name of the servlet to map. This must match a 'servlet-name' from the servlets list.",
-            example = "HelloWorldServlet",
+            examples = "HelloWorldServlet",
             defaultValue = "HelloWorld",
             required = true
     )
@@ -16,7 +16,7 @@ public class ServletMappingImpl implements ServletMapping {
 
     @SchemaProperty(
             description = "The URL pattern to map to the servlet. It must start with a '/'.",
-            example = "/hello",
+            examples = "/hello",
             defaultValue = "/hello",
             pattern = "^/.*",
             required = true

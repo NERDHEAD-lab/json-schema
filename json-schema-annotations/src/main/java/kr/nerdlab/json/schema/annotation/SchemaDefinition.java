@@ -19,9 +19,9 @@ public @interface SchemaDefinition {
 
     /**
      * The specification version of the JSON Schema.
-     * This is typically set to <a href="http://json-schema.org/draft-07/schema#">http://json-schema.org/draft-07/schema#</a>.
+     * This is typically set to <a href="https://json-schema.org/draft/2020-12/schema">https://json-schema.org/draft/2020-12/schema</a>.
      */
-    SchemaVersion version() default SchemaVersion.DRAFT_07;
+    SchemaVersion version() default SchemaVersion.DRAFT_2020_12;
 
     /**
      * A title for the schema.

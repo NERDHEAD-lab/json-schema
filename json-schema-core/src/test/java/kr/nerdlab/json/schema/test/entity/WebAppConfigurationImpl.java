@@ -20,7 +20,7 @@ public class WebAppConfigurationImpl implements WebAppConfiguration {
 
     @SchemaProperty(
             description = "A human-readable name for the web application.",
-            example = "My Awesome App",
+            examples = "My Awesome App",
             defaultValue = "Demo Application"
     )
     @JsonProperty("display-name")

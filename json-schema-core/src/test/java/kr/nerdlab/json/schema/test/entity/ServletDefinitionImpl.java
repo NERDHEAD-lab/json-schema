@@ -9,7 +9,7 @@ public class ServletDefinitionImpl implements ServletDefinition {
 
     @SchemaProperty(
             description = "A unique name for the servlet, used for mapping.",
-            example = "HelloWorldServlet",
+            examples = "HelloWorldServlet",
             defaultValue = "HelloWorld",
             required = true
     )
@@ -18,7 +18,7 @@ public class ServletDefinitionImpl implements ServletDefinition {
 
     @SchemaProperty(
             description = "The fully qualified class name of the servlet. This class must implement the kr.nerdlab.server.servlet.Servlet interface.",
-            example = "com.example.HelloWorldServlet",
+            examples = "com.example.HelloWorldServlet",
             defaultValue = "kr.nerdlab.demo.servlet.HelloWorldServlet",
             required = true
     )
@@ -27,7 +27,7 @@ public class ServletDefinitionImpl implements ServletDefinition {
 
     @SchemaProperty(
             description = "Optional initialization parameters for the servlet, passed to the servlet's init() method.",
-            example = "{\"greeting\": \"Hello\"}"
+            examples = "{\"greeting\": \"Hello\"}"
     )
     @JsonProperty("init-params")
     private Map<String, String> initParams;
