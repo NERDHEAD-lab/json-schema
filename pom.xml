@@ -11,7 +11,7 @@
 
     <name>JSON Schema Parent</name>
     <description>Parent POM for JSON Schema projects</description>
-    <url>https://github.com/NERDHEAD-lab/json-shema</url>
+    <url>https://github.com/NERDHEAD-lab/json-schema</url>
 
     <modules>
         <module>json-schema-annotations</module>
