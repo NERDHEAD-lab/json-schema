@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-public class JsonSchemaValidator {
+public class SampleJsonSchemaValidator {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
@@ -29,7 +29,7 @@ public class JsonSchemaValidator {
      */
     public static Set<String> validate(File jsonFile, Class<?> dtoClass) throws IOException {
         JsonNode jsonNode = mapper.readTree(jsonFile);
-        JsonNode schemaNode = mapper.readTree(JsonSchemaGenerator.generateSchema(dtoClass));
+        JsonNode schemaNode = mapper.readTree(SampleJsonSchemaGenerator.generateSchema(dtoClass));
         return validate(jsonNode, schemaNode);
     }
 

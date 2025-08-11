@@ -26,11 +26,10 @@ import java.util.*;
  *
  * @see <a href="https://json-schema.org/">JSON Schema</a>
  * @see <a href="https://json-schema.org/specification">JSON Schema Specification</a>
- * @see <a href="http://json-schema.org/draft-07/schema#/">JSON Schema Draft 07</a>
  */
-public class JsonSchemaGenerator {
+public class SampleJsonSchemaGenerator {
 
-    private static final Logger logger = LoggerFactory.getLogger(JsonSchemaGenerator.class);
+    private static final Logger logger = LoggerFactory.getLogger(SampleJsonSchemaGenerator.class);
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public static boolean writeSchemaToFile(Class<?> rootClass, String filePath) throws IOException {
