@@ -1,6 +1,11 @@
-# Json Schema util
+# ~~Json Schema util~~
 
-
+만들려고 했던거 victools에 다 있음 
+https://mvnrepository.com/artifact/com.github.victools
+- json schema generator (jackson based)
+- json schema validator
+- json schema definition with swagger annotations
+- json schema maven plugin
 
 [![GitHub release][github-release-badge]][github-release-link]
 [![Build Status][build-status-badge]][build-status-link]
@@ -27,3 +32,5 @@
 [build-status-link]: https://github.com/NERDHEAD-lab/json-schema/actions
 [github-license-link]: https://github.com/NERDHEAD-lab/json-schema/blob/master/LICENSE
 [privacy-policy-link]: https://github.com/NERDHEAD-lab/json-schema/blob/master/privacy-policy.md
+
+
